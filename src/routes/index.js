@@ -21,7 +21,8 @@ const AppSwitch = () => {
             path={path}
             key={idx}
             exact
-            render={() => getRouteType({ element, type })}
+            // render={() => getRouteType({ element, type })}
+            element={getRouteType({ element, type })}
           />
         );
       })}
