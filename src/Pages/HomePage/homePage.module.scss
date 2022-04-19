@@ -1,0 +1,13 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  border: 3px solid red;
+  .bodyContainer {
+    width: inherit;
+    min-height: calc(100vh - 90vh);
+    border: 2px solid green;
+    margin-top: 10vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+}
