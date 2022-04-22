@@ -95,7 +95,7 @@
   .table__container {
     .table__body {
       .transaction {
-        background-color: #EBF4FC;
+        background-color: #ebf4fc;
         .out {
           div {
             color: var(--dark);
@@ -118,8 +118,43 @@
   }
 }
 
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 560px) {
   .page__container {
     font-size: 7px;
+    .table__container {
+      overflow-x: scroll;
+      min-width: 95%;
+      border: 2px solid red;
+      .table__header {
+        border: 2px solid blue;
+        //   border: 3px solid red;
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+  
+        font-weight: 600;
+        div {
+        //   padding-left: 15px;
+  
+          &:nth-child(6) {
+              border: 3px solid red;
+              display: flex;
+              justify-content: center;
+            width: 80px;
+            padding-left: 0px;
+          }
+          &:nth-child(7) {
+              border: 3px solid red;
+            width: 30px;
+            padding-left: 0px;
+            // margin-right: 30px;
+          }
+          &:nth-child(8) {
+            //   border: 3px solid red;
+  
+            padding-left: 0px;
+          }
+        }
+      }
+    }
   }
 }
