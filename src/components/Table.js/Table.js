@@ -8,7 +8,6 @@ dayjs.extend(relativeTime);
 
 function Table() {
   const { theme } = ThemeObject();
-  console.log(theme);
 
   // Function to generate new data to append to table
   const appendNewData = useCallback(function () {

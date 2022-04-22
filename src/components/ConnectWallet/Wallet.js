@@ -17,7 +17,7 @@ const Wallet = () => {
     >
       <div className={styles.walletContent}>
         {hide && (
-          <div>
+          <div className={styles.contentParent}>
             <h2>CONNECT WALLET</h2>
             <button
               onClick={() => {

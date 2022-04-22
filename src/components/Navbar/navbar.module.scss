@@ -75,8 +75,8 @@
             display: inline-block;
             padding: 10px 35px;
 
-            background: var( --buttonColor);
-            color: var( --white);
+            background: var(--buttonColor);
+            color: var(--white);
             border: none;
             cursor: pointer;
             text-align: center;
@@ -128,8 +128,8 @@
           display: inline-block;
           padding: 10px 35px;
 
-          background: var( --buttonColor);
-          color: var( --white);
+          background: var(--buttonColor);
+          color: var(--white);
           border: none;
           cursor: pointer;
           text-align: center;
@@ -232,7 +232,9 @@
     align-items: center;
     flex-direction: column;
     .horizontalBar {
-      .horizontalBarContent {
+        .horizontalBarContent {
+        //   border: 3px solid red;
+          width: 95%;
         .logoContainer {
           .logoText {
             width: 70%;

@@ -9,7 +9,6 @@ import { AiOutlineClose } from "react-icons/ai";
 import { handleFormSubmit } from "./handleFormSubmit";
 import { ThemeObject } from "../../../context/themeContext";
 
-
 const PopUp = forwardRef(({ sethide, hide }, ref) => {
   const { theme } = ThemeObject();
   const [message, setmessage] = useState("");
@@ -93,8 +92,9 @@ const PopUp = forwardRef(({ sethide, hide }, ref) => {
                   cols="50"
                 ></textarea>
               </div>
-
-              <input type="submit" style={{ opacity: importWallet && 0.5 }} />
+              <button style={{ opacity: importWallet && 0.5 }}>
+                Get Started
+              </button>
             </form>
           </div>
         </div>
