@@ -4,23 +4,20 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose } from "react-icons/ai";
 import { ThemeObject } from "../../context/themeContext";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
-// import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
-//   const navigate = useNavigate();
   const { toggleTheme, theme } = ThemeObject();
-  console.log({ toggleTheme, theme });
   const reducer = (state, action) => {
     switch (action.type) {
       case "toggleNavIcon":
         return {
           toggleNav: !state.toggleNav,
-          toggleVerticalBar: state.toggleVerticalBar,
+          dropDownActive: state.dropDownActive,
         };
-      case "toggleVerticalBar":
+      case "toggleDropDownActive":
         return {
           toggleNav: state.toggleNav,
-          toggleVerticalBar: !state.toggleVerticalBar,
+          dropDownActive: !state.dropDownActive,
         };
       default:
         return state;
@@ -29,18 +26,58 @@ const Navbar = () => {
 
   const [state, dispatch] = useReducer(reducer, {
     toggleNav: false,
-    toggleVerticalBar: false,
+    dropDownActive: false,
   });
-
   return (
-    <div className={styles.navbarParentDiv}>
+    <div
+      className={
+        theme
+          ? `${styles.navbarParentDiv}`
+          : `${styles.navbarParentDiv} ${styles.lightMode}`
+      }
+    >
       <div className={styles.horizontalBar}>
-        <div className={styles.logoContainer}>
-          <div className={styles.logoItem}></div>
-          <div className={styles.logoText}>Metamask</div>
+        <div className={styles.horizontalBarContent}>
+          <div className={styles.logoContainer}>
+            <div className={styles.logoItem}></div>
+            <div className={styles.logoText}>Metamask</div>
+          </div>
+          <div className={styles.listContent}>
+            <div className={styles.listItems}>
+              <button
+                onClick={() => {
+                  window.location.replace("https://metamask.io/download");
+                }}
+              >
+                Download
+              </button>
+              <ToggleSwitch
+                label={theme === true ? "Light Mode" : "Dark Mode"}
+              />
+            </div>
+            <div className={styles.navIconsContainer}>
+              <div
+                onClick={() => {
+                  dispatch({ type: "toggleNavIcon" });
+                  dispatch({ type: "toggleDropDownActive" });
+                }}
+                className={styles.navIcons}
+              >
+                {!state.toggleNav ? <GiHamburgerMenu /> : <AiOutlineClose />}
+              </div>
+            </div>
+          </div>
         </div>
-        <div className={styles.listContent}>
-          <div className={styles.listItems}>
+      </div>
+      <div
+        className={
+          !state.toggleNav
+            ? `${styles.dropDownContent}`
+            : `${styles.dropDownContent} ${styles.active}`
+        }
+      >
+        <div className={styles.listContentDropdown}>
+          <div className={styles.listItemsDropdown}>
             <button
               onClick={() => {
                 window.location.replace("https://metamask.io/download");
@@ -48,21 +85,14 @@ const Navbar = () => {
             >
               Download
             </button>
-            <ToggleSwitch label={theme === true ? "Light Mode" : "Dark Mode"} />
-          </div>
-
-          <div
-            onClick={() => {
-              dispatch({ type: "toggleNavIcon" });
-              dispatch({ type: "toggleVerticalBar" });
-            }}
-            className={styles.navIcons}
-          >
-            {!state.toggleNav ? <GiHamburgerMenu /> : <AiOutlineClose />}
+            <div className={styles.toggleSwitch}>
+              <ToggleSwitch
+                label={theme === true ? "Light Mode" : "Dark Mode"}
+              />
+            </div>
           </div>
         </div>
       </div>
-      <div className={styles.verticalBar}></div>
     </div>
   );
 };

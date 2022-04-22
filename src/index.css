@@ -5,8 +5,13 @@
   --dark: #000;
   --danger: #ff0000ae;
   --buttonColor: #037dd6;
-  --footerColor: #98bee2;
+  --footerColor: #3c444b;
   --secondary: #f6851b;
+  --partnerBgColor: #24292e;
+  --footerColor2: #e9ebee;
+  --footerText2: #3c3d76;
+  --TablebuttonOut: #f8ebba;
+  --TablebuttonIn: #ccf4ed;
 }
 * {
   margin: 0;
