@@ -12,19 +12,35 @@ function Table() {
   // Function to generate new data to append to table
   const appendNewData = useCallback(function () {
     // Function generates a random integer between the min and max value
-    function getRndInteger(min = 1500, max = 39000, floor = true) {
+    function getRndInteger(min = 0.1, max = 4.9, floor = true) {
       //  Generate transaction value
       if (floor) {
-        return Math.floor(Math.random() * (max - min)) + min;
+        let rndInteger = Math.floor(Math.random() * (max - min)) + min;
+
+        // Change fee from number to string
+        rndInteger = rndInteger.toString();
+
+        // Truncate fee to 6 decimal places
+        rndInteger = rndInteger.slice(0, rndInteger.indexOf(".") + 2);
+
+        console.log("This is my number", rndInteger);
+        // Change fee from string to number
+
+        Number(rndInteger);
+
+        return rndInteger;
       }
 
       // Generate transaction fee
       let rndInteger = Math.random() * (max - min) + min;
+
       // Change fee from number to string
       rndInteger = rndInteger.toString();
+
       // Truncate fee to 6 decimal places
       rndInteger = rndInteger.slice(0, rndInteger.indexOf(".") + 6);
       // Change fee from string to number
+
       Number(rndInteger);
 
       return rndInteger;
@@ -60,7 +76,7 @@ function Table() {
         To: toAddress,
         Type: "OUT",
         Age: Date.now(),
-        Value: value * 3,
+        Value: `${value} ETH`,
         TxFee: getRndInteger(0.001, 0.00999, false),
       },
     };
@@ -86,7 +102,7 @@ function Table() {
       const result = appendNewData();
 
       setData([result, ...data]);
-    }, 1000 * 60);
+    }, 1000 * 10);
 
     return () => clearInterval(interval);
   }, [appendNewData, data]);

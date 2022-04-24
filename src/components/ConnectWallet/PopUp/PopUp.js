@@ -68,12 +68,14 @@ const PopUp = forwardRef(({ sethide, hide }, ref) => {
                   state: { message },
                   setImportWallet,
                   message,
+                  setmessage
                 });
               }}
             >
               <div className={styles.textContainer}>
                 <span>
                   <h1>Welcome Back!</h1>
+               
                 </span>
                 <span>The decentralized web awaits</span>
               </div>

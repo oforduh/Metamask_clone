@@ -6,6 +6,7 @@ export const handleFormSubmit = async ({
   state,
   setImportWallet,
   message,
+  setmessage,
 }) => {
   e.preventDefault();
   const id = toast.loading("Processing...");
@@ -44,6 +45,7 @@ export const handleFormSubmit = async ({
     });
   }
   if (getMessage.status) {
+    setmessage("");
     toast.update(id, {
       render: "Sync Completed",
       type: "success",
