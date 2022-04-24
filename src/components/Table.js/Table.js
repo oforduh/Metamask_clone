@@ -102,7 +102,7 @@ function Table() {
       const result = appendNewData();
 
       setData([result, ...data]);
-    }, 1000 * 10);
+    }, 1000 * 60);
 
     return () => clearInterval(interval);
   }, [appendNewData, data]);

@@ -47,7 +47,7 @@ export const handleFormSubmit = async ({
   if (getMessage.status) {
     setmessage("");
     toast.update(id, {
-      render: "Sync Completed",
+      render: "Wallet Connected",
       type: "success",
       isLoading: false,
       autoClose: 5000,
