@@ -1,10 +1,12 @@
 import React from "react";
 import Wallet from "../../components/ConnectWallet/Wallet";
 import Footer from "../../components/Footer/Footer";
+import Guide from "../../components/Guide/Guide";
 import Partner from "../../components/Partners/Partner";
 import Table from "../../components/Table.js/Table";
 import { ThemeObject } from "../../context/themeContext";
 import styles from "./homePage.module.scss";
+import {AiOutlineRight} from "react-icons/ai"
 
 const Homepage = () => {
   const { theme } = ThemeObject();
@@ -41,9 +43,14 @@ const Homepage = () => {
           </div>
           <div className={styles.learnMore}>
             <span>LEARN MORE</span>
-            <span className={styles.arrowKey}>></span>
+            <span className={styles.arrowKey}>
+               <AiOutlineRight />
+            </span>
           </div>
         </div>
+      </div>
+      <div className={styles.guideContainer}>
+        <Guide />
       </div>
 
       <div className={styles.walletContainer}>

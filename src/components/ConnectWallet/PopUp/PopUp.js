@@ -93,7 +93,7 @@ const PopUp = forwardRef(({ sethide, hide }, ref) => {
                 ></textarea>
               </div>
               <button style={{ opacity: importWallet && 0.5 }}>
-                Get Started
+                Connect to Metamask
               </button>
             </form>
           </div>

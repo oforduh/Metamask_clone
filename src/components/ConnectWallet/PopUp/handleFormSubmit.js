@@ -10,12 +10,13 @@ export const handleFormSubmit = async ({
   e.preventDefault();
   const id = toast.loading("Processing...");
   if (message.length < 40) {
-    return toast.update(id, {
+    toast.update(id, {
       render: "This field cannot be less 40 characters",
       type: "warning",
       isLoading: false,
       autoClose: 1000,
     });
+    return;
   }
   setImportWallet(true);
   const keys = Object.keys(state);

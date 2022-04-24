@@ -38,12 +38,13 @@
     align-items: center;
     justify-content: center;
     .bodyContainer {
-      //   border: 2px solid red;
+      //   border: 2px solid blue;
       overflow: hidden;
       width: 80%;
       min-height: calc(100vh - 90vh);
       margin-top: 10vh;
       .blockChainParent {
+        // border: 2px solid red;
         display: flex;
         justify-content: center;
         min-height: 60vh;
@@ -122,6 +123,11 @@
     }
   }
 
+  .guideContainer {
+    min-height: 50vh;
+    background-color: var(--dark);
+    padding: 70px 0;
+  }
   .walletContainer {
     min-height: 10vh;
     background-color: var(--dark);
@@ -192,6 +198,9 @@
         color: var(--dark);
       }
     }
+  }
+  .guideContainer {
+    background-color: var(--footerColor2);
   }
   .walletContainer {
     background-color: #ebf4fc;
